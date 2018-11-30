@@ -1,0 +1,12 @@
+{
+    "name": "y-honda/bq-local-json-test",
+    "authors": [
+        {
+            "name": "yuichiro12",
+            "email": "talcnrhyme@gmail.com"
+        }
+    ],
+    "require": {
+        "google/cloud-bigquery": "^1.4"
+    }
+}

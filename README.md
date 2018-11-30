@@ -1,1 +1,0 @@
-# bq-local-json-test
