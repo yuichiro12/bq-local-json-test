@@ -20,7 +20,7 @@
  * @see https://github.com/GoogleCloudPlatform/php-docs-samples/tree/master/bigquery/api/README.md
  */
 // Include Google Cloud dependendencies using Composer
-require_once __DIR__ . 'vendor/autoload.php';
+require_once __DIR__ . '/vendor/autoload.php';
 if (count($argv) != 5) {
     return printf("Usage: php %s PROJECT_ID DATASET_ID TABLE_ID SOURCE\n", __FILE__);
 }
@@ -40,7 +40,7 @@ $bigQuery = new BigQueryClient([
 $dataset = $bigQuery->dataset($datasetId);
 $table = $dataset->table($tableId);
 // create the import job
-$loadConfig = $table->load(fopen($source, 'r'))->sourceFormat('NEWLINE_DELIMITED_JSON');
+$loadConfig = $table->load(file_get_contents($source))->sourceFormat('NEWLINE_DELIMITED_JSON');
 $job = $table->runJob($loadConfig);
 // poll the job until it is complete
 $backoff = new ExponentialBackoff(10);
